@@ -1,0 +1,17 @@
+= Тестирование модуля mapinfow_prj.reference
+>>> from mapinfow_prj.reference import СкПараметрыXlsx
+
+== Тестирование корректности чтения параметров систем координат
+>>> парам = СкПараметрыXlsx()
+
+>>> парам.дай_эллипсоиды()[3]
+СкПараметрыXlsx.Эллипсоид(код=3, имя='Krassovsky', proj='+ellps=krass')
+
+>>> [д for д in парам.дай_датумы() if д.имя == 'Pulkovo 1942'][0]
+СкПараметрыXlsx.Датум(код=1001, имя='Pulkovo 1942', proj='+ellps=krass +towgs84=24,-123,-94,0.02,-0.25,-0.13,1.1', ellps='+ellps=krass', towgs84='+towgs84=24,-123,-94,0.02,-0.25,-0.13,1.1', pm=None)
+
+>>> [п for п in парам.дай_проекции() if п.код == 8][0]
+СкПараметрыXlsx.Проекция(код=8, имя='Transverse Mercator, (also known as Gauss-Kruger)', число_парам=5, proj_format='+proj=tmerc +lon_0={} +lat_0={} +k_0={} +x_0={} +y_0={} +units={}')
+
+[е for е in парам.дай_ед_изм() if е.имя == 'Meters'][0]
+СкПараметрыXlsx.ЕдИзм(код=7, имя='Meters', proj_code='m')

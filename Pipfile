@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pyparsing = "*"
+openpyxl = "*"
 
 [dev-packages]
 mypy = "*"
